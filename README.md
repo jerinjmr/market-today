@@ -35,5 +35,6 @@ Finally, web app will be deployed on http://jmrinvestments.herokuapp.com.
 ## References
 * [Web Scraping](https://www.excellarate.com/blogs/web-scraping-introduction-applications-and-best-practices/#:~:text=Web%20scraping%20typically%20extracts%20large,show%20data%20from%20a%20website.)
 * [Beautiful Soup documentation](https://www.crummy.com/software/BeautifulSoup/bs4/doc/ )
-* [Python flask application deployment in Heroku - Quick start guide](https://www.geeksforgeeks.org/deploy-python-flask-app-on-heroku/)
+* [Python flask application deployment in Heroku - Quick start guide 1](https://www.geeksforgeeks.org/deploy-python-flask-app-on-heroku/)
+* [Python flask application deployment in Heroku - Quick start guide 2](https://www.jcchouinard.com/deploy-a-flask-app-on-heroku/)
 * [Heroku Documentation](https://devcenter.heroku.com/articles/getting-started-with-python)
