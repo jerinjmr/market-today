@@ -1,21 +1,19 @@
-# Web Scraping
-Extracting large amount of data from websites.
-
-## Web Scraping Libraries/Frameworks
-### 1. Beautiful Soup
-Popular Python package for web scraping. It is used to fetch data from html and xml files.  
-`pip install beautifulsoup4`
-
-### 2. Request
-To make http requests  
-`pip install requests`
-
-### 3. Scrapy
-Framework for web scrapping: https://scrapy.org/ 
+# Stock Recommendation System  
+Website for stock news and recommendations using python web scraping technology. Python flask server is used as back-end service and uses Heroku platform to deploy the web application.  
+Visit [JMR Investmensts and Research center](http://jmrinvestments.herokuapp.com.) to view indian stock news and recommendations.  
 
 ## Run program locally
-`python3 wsgi.py`
-Go to 'http://127.0.0.1:5000/' to view the results in webpage.
+
+### 1. Prerequisite
+1. Python3  
+2. Pip  
+
+### 2. Install dependencies
+`pip3 install -r requirements.txt`
+
+### 3. Run server
+`python3 wsgi.py`  
+Go to http://127.0.0.1:5000/ to view the results in webpage.
 
 ## Host Website using Heroku
 
