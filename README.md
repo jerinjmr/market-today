@@ -28,11 +28,12 @@ Ubuntu installation: `sudo snap install heroku --classic`
 ### 2. Deploy Application using Heroku CLI
 1. `heroku login`
 2. `heroku create jmrinvestments`
-3. `git push heroku`
+3. `git push heroku` 
 
 Finally, web app will be deployed on http://jmrinvestments.herokuapp.com. 
 
 ## References
 * [Web Scraping](https://www.excellarate.com/blogs/web-scraping-introduction-applications-and-best-practices/#:~:text=Web%20scraping%20typically%20extracts%20large,show%20data%20from%20a%20website.)
 * [Beautiful Soup documentation](https://www.crummy.com/software/BeautifulSoup/bs4/doc/ )
-* [Python flask application deployment in Heroku](https://www.geeksforgeeks.org/deploy-python-flask-app-on-heroku/)
+* [Python flask application deployment in Heroku - Quick start guide](https://www.geeksforgeeks.org/deploy-python-flask-app-on-heroku/)
+* [Heroku Documentation](https://devcenter.heroku.com/articles/getting-started-with-python)
