@@ -1,12 +1,13 @@
 # Stock Recommendation System  
 Website for stock news and recommendations using python web scraping technology. Python flask server is used as back-end service and uses Heroku platform to deploy the web application.  
-Visit [JMR Investmensts and Research center](http://jmrinvestments.herokuapp.com.) to view indian stock news and recommendations.  
+Visit [JMR Investmensts and Research Centre](http://jmrinvestments.herokuapp.com.) to view indian stock news and recommendations.  
 
 ## Run program locally
 
 ### 1. Prerequisite
 1. Python3  
 2. Pip  
+3. Clone repo: `git clone https://github.com/jerinjaimon/stock-recommendation-system.git`
 
 ### 2. Install dependencies
 `pip3 install -r requirements.txt`
