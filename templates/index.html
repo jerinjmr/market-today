@@ -30,7 +30,11 @@
             <tr>
                 <td>{{loop.index}}</td>
                 <td>{{news[0]}}</td>
-                <td>{{news[1]}}</td>
+                <td>
+                    <a href="{{news[2]}}">
+                        {{news[1]}}
+                    </a>
+                </td>
             </tr>
             {% endfor %}
         </tbody>
