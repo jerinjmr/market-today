@@ -2,9 +2,9 @@
 
 Python web scraping technology is used to extract information from website.
 """
+from datetime import datetime
 import requests
 from bs4 import BeautifulSoup
-from datetime import datetime
 
 
 def get_stock_reco():
@@ -69,3 +69,7 @@ def get_stock_reco():
     for item in market_news:
         item[0] = item[0].strftime('%B %d, %Y %I:%M %p')
     return market_news
+
+
+if __name__ == '__main__':
+    print(get_stock_reco())
