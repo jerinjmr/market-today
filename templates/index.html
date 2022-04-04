@@ -5,9 +5,9 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Stock News</title>
+    <title>Market Today.com</title>
     <link type="text/css" rel="stylesheet" href="../static/style.css">
-    <link rel="shortcut icon" href="{{ url_for('static', filename='aj.png') }}">
+    <link rel="shortcut icon" href="{{ url_for('static', filename='mt.png') }}">
 </head>
 
 <body>
@@ -15,7 +15,7 @@
         <h1 class="logo">JMR Investments and Research Centre</h1>
     </div>
     <div class="container">
-        <h2 class="new">Stock Recommendations and News* </h2>
+        <h2 class="banner">Stock Recommendations and News* </h2>
     </div>
     <table border="1">
         <thead>
@@ -31,7 +31,7 @@
                 <td>{{loop.index}}</td>
                 <td>{{news[0]}}</td>
                 <td>
-                    <a href="{{news[2]}}">
+                    <a class="table-content" href="{{news[2]}}">
                         {{news[1]}}
                     </a>
                 </td>
@@ -40,7 +40,12 @@
         </tbody>
     </table>
     <div class="container">
-        <h4 class="info">* This data is extracted using web scraping</h4>
+        <p class="footer">
+            *<b>Disclaimer</b>: We are not SEBI registered financial advisor.
+            The information available is extracted using web scraping technology from various stock brokers and
+            websites. The content in this page are purely for educational purpose and spread financial literacy.
+            Please invest in your own risk.
+        </p>
     </div>
     <script src="../static/script.js"></script>
 </body>

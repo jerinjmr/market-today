@@ -1,5 +1,5 @@
  body {
-  	background-color:#f6f8fa
+  	background-color:#24292f
  }
 
 .logo {
@@ -9,17 +9,30 @@
   	text-align: center;
 }
 
-.info {
-	background-color: #24292f;
+.footer {
+	background-color: #1baad0;
 	padding: 4px;
-	color: white;
+	color: black;
 }
 
-.new {
-	background-color: #0969da;
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+	color: blue;
+}
+
+.table-content {
+	color: black;
+}
+.banner {
+	background-color: #1baad0;
 	padding: 4px;
 	color: white;
-	width: fit-content;
+	width: auto;
+	text-align: center;
 }
 
 table {
@@ -30,10 +43,11 @@ table {
 	line-height: 24px;
 	text-align: left;
 	margin:auto;
+	width: auto;
 }	
 
 th {
-	background-color: #2c974b;
+	background-color: #19a547;
 	border-left: 1px solid #555;
 	border-right: 1px solid #777;
 	border-top: 1px solid #555;
