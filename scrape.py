@@ -42,7 +42,7 @@ def get_stock_reco():
                 url = level2.get('href')
                 level3 = element.span
                 date = level3.getText()  # Gets the date and time
-                date = datetime.strptime(date, '%B %d, %Y %I:%M %p %Z')
+                date = datetime.strptime(date[:-4], '%B %d, %Y %I:%M %p')
                 subject = [date, title, url]
                 news.append(subject)
         return news
@@ -53,7 +53,7 @@ def get_stock_reco():
         for item in links:
             level3 = item.time
             date = level3.getText()
-            date = datetime.strptime(date, '%b %d, %Y, %I:%M %p %Z')
+            date = datetime.strptime(date[:-4], '%b %d, %Y, %I:%M %p')
             level1 = item.h3
             for element in level1:
                 title = element.getText()  # Gets the title
