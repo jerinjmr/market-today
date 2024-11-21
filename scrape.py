@@ -40,11 +40,10 @@ def get_stock_reco():
                 level2 = element.a
                 title = level2.get('title')  # Gets the title
                 url = level2.get('href')
-                level3 = element.span
-                # date = level3.getText()  # Gets the date and time
-                # date = datetime.strptime(date[:-4], '%B %d, %Y %I:%M %p')
-                # subject = [date, title, url]
-                subject = [title, url]
+                date_comment = element.find(string=lambda text: isinstance(text, str) and 'IST' in text)
+                date_text = date_comment.strip('<!-- <span>').strip()
+                date = datetime.strptime(date_text[:-6], '%B %d, %Y %I:%M %p')
+                subject = [date, title, url]
                 news.append(subject)
         return news
 
@@ -66,9 +65,9 @@ def get_stock_reco():
     market_news_01 = fetch_market_news_01(links)
     market_news_02 = fetch_market_news_02(link3)
     market_news = market_news_01 + market_news_02
-    # market_news.sort(reverse=True, key=lambda x: x[0])
-    # for item in market_news:
-    #     item[0] = item[0].strftime('%B %d, %Y %I:%M %p')
+    market_news.sort(reverse=True, key=lambda x: x[0])
+    for item in market_news:
+        item[0] = item[0].strftime('%B %d, %Y %I:%M %p')
     return market_news
 
 
