@@ -5,31 +5,48 @@ Python web scraping technology is used to extract information from website.
 from datetime import datetime
 import requests
 from bs4 import BeautifulSoup
+import concurrent.futures
+from functools import lru_cache
+from typing import List, Tuple
+import logging
 
+logging.basicConfig(level=logging.INFO)
+logger = logging.getLogger(__name__)
 
-def get_stock_reco():
-    """
-    Scrape stock news from moneycontrol.
+# Add request timeout and headers
+TIMEOUT = 10
+HEADERS = {
+    'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36'
+}
 
-    Extracts date and new titles.
+def fetch_url(url: str) -> str:
+    """Fetch URL with error handling."""
+    try:
+        response = requests.get(url, timeout=TIMEOUT, headers=HEADERS)
+        response.raise_for_status()
+        return response.text
+    except requests.RequestException as e:
+        logger.error(f"Error fetching {url}: {e}")
+        return ""
 
-    :return market_news: list of tuples of date and title.
-    """
-    res1 = requests.get('https://www.moneycontrol.com/news/business/stocks/')
-    res2 = requests.get(
-        'https://www.moneycontrol.com/news/business/stocks/page-2')
-
-    res3 = requests.get(
-        'https://economictimes.indiatimes.com/markets/stocks/recos')
-
-    soup1 = BeautifulSoup(res1.text, 'html.parser')
-    soup2 = BeautifulSoup(res2.text, 'html.parser')
-    soup3 = BeautifulSoup(res3.text, 'html.parser')
-
-    link1 = soup1.select('#cagetory')
-    link2 = soup2.select('#cagetory')
+def get_stock_reco() -> List[Tuple[str, str, str]]:
+    """Fetch stock recommendations with parallel requests."""
+    urls = [
+        'https://www.moneycontrol.com/news/business/stocks/',
+        'https://www.moneycontrol.com/news/business/stocks/page-2',
+        'https://economictimes.indiatimes.com/markets/stocks/recos'
+    ]
+    
+    # Parallel fetch of URLs
+    with concurrent.futures.ThreadPoolExecutor(max_workers=3) as executor:
+        responses = list(executor.map(fetch_url, urls))
+    
+    soups = [BeautifulSoup(resp, 'html.parser') for resp in responses if resp]
+    
+    link1 = soups[0].select('#cagetory')
+    link2 = soups[1].select('#cagetory')
     links = link1 + link2
-    link3 = soup3.select('.eachStory')
+    link3 = soups[2].select('.eachStory')
 
     def fetch_market_news_01(links):
         """Fetch market feeds."""
