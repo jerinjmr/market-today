@@ -1,47 +1,95 @@
-# Market Today: Stock Recommendation System  
-[Market Today.com](https://markettoday.herokuapp.com/) is a website for stock news and recommendations using python web scraping technology. Python flask server is used as back-end service and uses Heroku platform to deploy the web application.  
-Visit [Market Today.com](https://markettoday.herokuapp.com) to view indian stock news and recommendations.  
+# Market Today: AI-powered Stock Market Insights
 
-## Run program locally
+A real-time stock news and recommendations platform powered by web scraping and AI insights. The system uses Flask for the backend, web scraping for data collection, and integrates with the Llama AI model for market insights.
+Visit [MarketToday](https://jerinjmr.pythonanywhere.com/) to view free hosted website.
 
-### 1. Prerequisite
-1. Python3  
-2. Pip  
-3. Clone repo: `git clone https://github.com/jerinjaimon/stock-recommendation-system.git`
+## Features
 
-### 2. Install dependencies
-`pip3 install -r requirements.txt`
+- 🔄 Real-time stock market news from multiple sources
+- 🤖 AI-powered market insights using Llama 3.2
+- 📊 Cached recommendations for better performance
+- 🌐 Responsive web interface
 
-### 3. Run server
-`python3 wsgi.py`  
-Go to http://127.0.0.1:5000/ to view the results in webpage.
+## Technical Details
 
-## Host Website using Heroku
+- **Backend**: Flask 3.0.2
+- **Web Scraping**: BeautifulSoup4 4.12.3
+- **AI Model**: Llama 3.2 via OpenRouter API
+- **Deployment**: Docker with Gunicorn server
+- **Caching**: Built-in LRU cache for performance
 
-Automatic Deployment from GitHub (Recommended)
-------------------------------------
-It is recommended to maintain a GitHub repository for your project for version control. You can easily integrate your GitHub repository with Heroku app and deploy your application directly from your GitHub branch. Heroku will build and deploy a new version of application for every push to specified branch.   
-You can create a CI/CD pipeline for continous delivery of your application in Heroku dashboard. Refer [here](https://devcenter.heroku.com/articles/pipelines)  
+## Performance Features
 
-Manual Deployment Using Heroku Repo
------------------------------
+- Request caching to minimize API calls
+- Parallel URL fetching for faster data collection
+- Streaming AI responses for better user experience
+- Production-grade Gunicorn server with worker management
 
-### 1. Prerequisite
-* [Heroku Account](https://www.heroku.com/platform)
-* [Heroku cli](https://devcenter.heroku.com/articles/getting-started-with-python#set-up)  
-Ubuntu installation: `sudo snap install heroku --classic`
-* Git
+## Data & API Sources
 
-### 2. Deploy Application using Heroku CLI
-1. `heroku login`
-2. `heroku create markettoday`
-3. `git push heroku main` 
+- MoneyControl
+- Economic Times
+- OpenRouter AI API
 
-Finally, web app will be deployed on https://markettoday.herokuapp.com/ 
+## Prerequisites
+
+- Python 3.11 or higher
+- [OpenRouter API Key](https://openrouter.ai/). Create a `.env` file as shown below:
+    ```
+    OPENROUTER_API_KEY=your_openrouter_api_key_here
+    ```
+- Docker Engine v26.1.4 or higher (optional)
+
+
+## Installation
+
+1. Clone the repository:
+```bash
+git clone https://github.com/jerinjmr/market-today.git
+cd market-today
+```
+
+2. Install dependencies:
+```bash
+pip install -r requirements.txt
+```
+
+## Usage
+
+### 1. Run server locally
+```bash
+python3 wsgi.py
+```  
+Go to http://localhost:5000/ to view the results in webpage.
+
+### 2. Run server using Docker
+```bash
+docker build -t markettoday .
+docker run -e OPENROUTER_API_KEY=your_api_key_here -p 5000:5000 markettoday
+
+```
+Go to http://localhost:5000/ to view the results in webpage.
+
+
+## Disclaimer
+
+This application is for educational purposes only. We are not SEBI registered financial advisors. Please conduct your own research before making any investment decisions.
+
+## Contributing
+
+1. Fork the repository
+2. Create your feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit your changes (`git commit -m 'Add some amazing feature'`)
+4. Push to the branch (`git push origin feature/amazing-feature`)
+5. Open a Pull Request
+
+## License
+
+This project is licensed under the MIT License - see the LICENSE file for details.
 
 ## References
-* [Web Scraping](https://www.excellarate.com/blogs/web-scraping-introduction-applications-and-best-practices/#:~:text=Web%20scraping%20typically%20extracts%20large,show%20data%20from%20a%20website.)
-* [Beautiful Soup documentation](https://www.crummy.com/software/BeautifulSoup/bs4/doc/ )
-* [Python flask application deployment in Heroku - Quick start guide 1](https://www.geeksforgeeks.org/deploy-python-flask-app-on-heroku/)
-* [Python flask application deployment in Heroku - Quick start guide 2](https://www.jcchouinard.com/deploy-a-flask-app-on-heroku/)
-* [Heroku Documentation](https://devcenter.heroku.com/articles/getting-started-with-python)
+
+- [Flask Documentation](https://flask.palletsprojects.com/)
+- [Beautiful Soup Documentation](https://www.crummy.com/software/BeautifulSoup/bs4/doc/)
+- [OpenRouter API Documentation](https://openrouter.ai/docs)
+- [OpenAI API](https://platform.openai.com/docs/api-reference/chat/create)
