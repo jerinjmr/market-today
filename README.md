@@ -27,9 +27,9 @@ Visit [MarketToday](https://jerinjmr.pythonanywhere.com/) to view free hosted we
 
 ## Data & API Sources
 
-- MoneyControl
-- Economic Times
-- OpenRouter AI API
+- [MoneyControl](https://www.moneycontrol.com/)
+- [Economic Times](https://economictimes.indiatimes.com/)
+- [OpenRouter AI API](https://openrouter.ai/)
 
 ## Prerequisites
 
