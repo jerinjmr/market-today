@@ -1,7 +1,7 @@
 # Market Today: AI-powered Stock Market Insights
 
 A real-time stock news and recommendations platform powered by web scraping and AI insights. The system uses Flask for the backend, web scraping for data collection, and integrates with the Llama AI model for market insights.
-Visit [MarketToday](https://jerinjmr.pythonanywhere.com/) to view free hosted website.
+Visit [MarketToday](https://market-today.onrender.com/) to view free hosted website.
 
 ## Features
 
