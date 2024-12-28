@@ -1,109 +1,195 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap");
+    </style>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>MarketToday</title>
-    <link type="text/css" rel="stylesheet" href="../static/style.css">
-    <link rel="shortcut icon" href="{{ url_for('static', filename='mt.png') }}">
-</head>
+    <link type="text/css" rel="stylesheet" href="../static/style.css" />
+    <link
+      rel="shortcut icon"
+      href="{{ url_for('static', filename='mt.png') }}"
+    />
+    <script>
+      // Check for saved theme preference, otherwise use system preference
+      const getPreferredTheme = () => {
+        const saved = localStorage.getItem("theme");
+        if (saved) return saved;
+        return window.matchMedia("(prefers-color-scheme: dark)").matches
+          ? "dark"
+          : "light";
+      };
 
-<body>
+      // Apply theme immediately to prevent flash
+      document.documentElement.setAttribute("data-theme", getPreferredTheme());
+    </script>
+  </head>
+
+  <body>
     <div class="container">
-        <h1 class="logo"> MarketToday: AI-powered Stock Market Insights</h1>
+      <!-- Add Theme Toggle -->
+      <div class="theme-switch">
+        <button id="themeToggle" aria-label="Toggle theme">
+          <svg
+            class="sun-icon"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+          >
+            <circle cx="12" cy="12" r="5"></circle>
+            <line x1="12" y1="1" x2="12" y2="3"></line>
+            <line x1="12" y1="21" x2="12" y2="23"></line>
+            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+            <line x1="1" y1="12" x2="3" y2="12"></line>
+            <line x1="21" y1="12" x2="23" y2="12"></line>
+            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+          </svg>
+          <svg
+            class="moon-icon"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+          >
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+          </svg>
+        </button>
+      </div>
+      <h1 class="logo">MarketToday: AI-powered Stock Market Insights</h1>
     </div>
 
     <!-- Tabs -->
     <div class="container">
-        <div class="tabs">
-            <button class="tab-button active" onclick="openTab(event, 'ai-insights')">AI Insights</button>
-            <button class="tab-button" onclick="openTab(event, 'stock-recommendations')">Stock Recommendations</button>
-        </div>
+      <div class="tabs">
+        <button
+          class="tab-button active"
+          onclick="openTab(event, 'ai-insights')"
+        >
+          AI Insights
+        </button>
+        <button
+          class="tab-button"
+          onclick="openTab(event, 'stock-recommendations')"
+        >
+          Stock Recommendations
+        </button>
+      </div>
     </div>
 
     <!-- AI Insights Tab -->
     <div id="ai-insights" class="tab-content active">
-        <div class="container ai-section">
-            <h3>📊 MarketToday AI Insights</h3>
-            <p id="ai-content">
-                <span class="loading">
-                    <svg class="animate-spin h-5 w-5 mr-3" viewBox="0 0 24 24" width="24" height="24">
-                        <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4" fill="none"></circle>
-                        <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-                    </svg>
-                    Loading AI Insights<span class="dots"></span>
-                </span>
-            </p>
-            <h5>🤖 Powered by Llama 3.2 Model</h5>
-        </div>
+      <div class="container ai-section">
+        <h3>📊 MarketToday AI Insights</h3>
+        <p id="ai-content">
+          <span class="loading">
+            <svg
+              class="animate-spin h-5 w-5 mr-3"
+              viewBox="0 0 24 24"
+              width="24"
+              height="24"
+            >
+              <circle
+                class="opacity-25"
+                cx="12"
+                cy="12"
+                r="10"
+                stroke="currentColor"
+                stroke-width="4"
+                fill="none"
+              ></circle>
+              <path
+                class="opacity-75"
+                fill="currentColor"
+                d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+              ></path>
+            </svg>
+            Loading AI Insights<span class="dots"></span>
+          </span>
+        </p>
+        <h5>🤖 Powered by Llama 3.2 Model</h5>
+      </div>
     </div>
 
     <!-- Stock Recommendations Tab -->
     <div id="stock-recommendations" class="tab-content">
-        <div class="container">
-            <h2 class="banner">Stock Recommendations and News* </h2>
-        </div>
+      <div class="container">
+        <h2 class="banner">Stock Recommendations and News*</h2>
+      </div>
 
-        <table border="1">
-            <thead>
-                <tr>
-                    <th>No</th>
-                    <th align="left">Date</th>
-                    <th align="left">Feeds</th>
-                </tr>
-            </thead>
-            <tbody>
-                {% for news in calls %}
-                <tr>
-                    <td>{{ loop.index }}</td>
-                    <td>{{ news[0] }}</td>
-                    <td>
-                        <a class="table-content" href="{{ news[2] }}">
-                            {{ news[1] }}
-                        </a>
-                    </td>
-                </tr>
-                {% endfor %}
-            </tbody>
-        </table>
+      <table border="1">
+        <thead>
+          <tr>
+            <th>No</th>
+            <th align="left">Date</th>
+            <th align="left">Feeds</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for news in calls %}
+          <tr>
+            <td>{{ loop.index }}</td>
+            <td>{{ news[0] }}</td>
+            <td>
+              <a class="table-content" href="{{ news[2] }}"> {{ news[1] }} </a>
+            </td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
     </div>
 
     <div class="container">
-        <p class="footer">
-            *<b>Disclaimer</b>: We are not SEBI registered financial advisors.
-            The information available is extracted using web scraping technology from various stock brokers and
-            websites. The content on this page is purely for educational purposes and to spread financial literacy.
-            Please invest at your own risk.
-        </p>
+      <p class="footer">
+        *<b>Disclaimer</b>: We are not SEBI registered financial advisors. The
+        information available is extracted using web scraping technology from
+        various stock brokers and websites. The content on this page is purely
+        for educational purposes and to spread financial literacy. Please invest
+        at your own risk.
+      </p>
     </div>
 
     <script>
-        function openTab(evt, tabName) {
-            var i, tabContent, tabButtons;
-            
-            // Hide all tab content
-            tabContent = document.getElementsByClassName("tab-content");
-            for (i = 0; i < tabContent.length; i++) {
-                tabContent[i].style.display = "none";
-            }
-            
-            // Remove active class from all tab buttons
-            tabButtons = document.getElementsByClassName("tab-button");
-            for (i = 0; i < tabButtons.length; i++) {
-                tabButtons[i].className = tabButtons[i].className.replace(" active", "");
-            }
-            
-            // Show the selected tab and mark its button as active
-            document.getElementById(tabName).style.display = "block";
-            evt.currentTarget.className += " active";
+      function openTab(evt, tabName) {
+        var i, tabContent, tabButtons;
+
+        // Hide all tab content
+        tabContent = document.getElementsByClassName("tab-content");
+        for (i = 0; i < tabContent.length; i++) {
+          tabContent[i].classList.remove("active");
         }
 
-        // Show AI Insights tab by default
-        document.getElementById("ai-insights").style.display = "block";
+        // Remove active class from all tab buttons
+        tabButtons = document.getElementsByClassName("tab-button");
+        for (i = 0; i < tabButtons.length; i++) {
+          tabButtons[i].classList.remove("active");
+        }
+
+        // Show the selected tab and mark its button as active
+        document.getElementById(tabName).classList.add("active");
+        evt.currentTarget.classList.add("active");
+      }
+
+      // Set initial state when DOM loads
+      document.addEventListener("DOMContentLoaded", function () {
+        // Hide all tabs except AI Insights
+        var tabContent = document.getElementsByClassName("tab-content");
+        for (var i = 0; i < tabContent.length; i++) {
+          tabContent[i].classList.remove("active");
+        }
+
+        // Show AI Insights tab
+        document.getElementById("ai-insights").classList.add("active");
+
+        // Set AI Insights button as active
+        document
+          .querySelector("[onclick=\"openTab(event, 'ai-insights')\"]")
+          .classList.add("active");
+      });
     </script>
     <script src="../static/script.js"></script>
-</body>
-
+  </body>
 </html>
