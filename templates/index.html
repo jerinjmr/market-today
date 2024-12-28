@@ -30,7 +30,6 @@
 
   <body>
     <div class="container">
-      <!-- Add Theme Toggle -->
       <div class="theme-switch">
         <button id="themeToggle" aria-label="Toggle theme">
           <svg
@@ -83,34 +82,16 @@
     <!-- AI Insights Tab -->
     <div id="ai-insights" class="tab-content active">
       <div class="container ai-section">
-        <h3>📊 MarketToday AI Insights</h3>
-        <p id="ai-content">
-          <span class="loading">
-            <svg
-              class="animate-spin h-5 w-5 mr-3"
-              viewBox="0 0 24 24"
-              width="24"
-              height="24"
-            >
-              <circle
-                class="opacity-25"
-                cx="12"
-                cy="12"
-                r="10"
-                stroke="currentColor"
-                stroke-width="4"
-                fill="none"
-              ></circle>
-              <path
-                class="opacity-75"
-                fill="currentColor"
-                d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
-              ></path>
-            </svg>
-            Loading AI Insights<span class="dots"></span>
-          </span>
-        </p>
-        <h5>🤖 Powered by Llama 3.2 Model</h5>
+        <span class="ai-section-header">
+          <h3>📊 MarketToday AI Insights</h3>
+          <h5>🤖 Powered by Llama 3.2 Model</h5>
+        </span>
+        <div id="ai-content">
+          <div class="loading-container">
+            <span class="loading-message">Reading the stars ✨</span>
+            <span class="blinking-dot"></span>
+          </div>
+        </div>
       </div>
     </div>
 
@@ -142,15 +123,13 @@
       </table>
     </div>
 
-    <div class="container">
-      <p class="footer">
-        *<b>Disclaimer</b>: We are not SEBI registered financial advisors. The
-        information available is extracted using web scraping technology from
-        various stock brokers and websites. The content on this page is purely
-        for educational purposes and to spread financial literacy. Please invest
-        at your own risk.
-      </p>
-    </div>
+    <p class="footer">
+      <b>Disclaimer:</b> MarketToday is an educational platform providing market
+      insights through AI and web scraping technology. We are not
+      SEBI-registered financial advisors. All information is for educational
+      purposes only. Please conduct your own research and consult with qualified
+      financial advisors before making investment decisions.
+    </p>
 
     <script>
       function openTab(evt, tabName) {
