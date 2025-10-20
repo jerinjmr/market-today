@@ -4,11 +4,13 @@ Uses python flask to start web server.
 """
 import os
 import time
+from datetime import datetime
 from dotenv import load_dotenv
 from flask import Flask, render_template, jsonify, Response, stream_with_context
 from scrape import get_stock_reco
 from openai import OpenAI
 from functools import lru_cache
+import pytz
 
 app = Flask(__name__)
 # Load environment variables from .env file
@@ -39,6 +41,9 @@ def stream_ai_insight():
         try:
             market_feed, _ = cached_stock_reco()
             headlines = "\n".join([news[1] for news in market_feed])
+            india_tz = pytz.timezone("Asia/Kolkata")
+            date = datetime.now(india_tz).date()
+
             client = OpenAI(
                 base_url="https://openrouter.ai/api/v1",
                 api_key=os.getenv("OPENROUTER_API_KEY"),
@@ -46,13 +51,16 @@ def stream_ai_insight():
             )
 
             stream = client.chat.completions.create(
-                model="meta-llama/llama-3.2-1b-instruct:free",
-                max_tokens=500,
+                model="openai/gpt-oss-20b:free",
+                max_tokens=3000,
                 stream=True,
                 messages=[
                     {
                         "role": "system",
-                        "content": "Generate short summary of stock market news in maximum 300 words. Title should be just stock market news.",
+                        "content": f"Generate short, crisp and clear summary of stock market news for the day {date}. \
+                            Clearly list down buy and sell recommendations. \
+                            Title should be just Stock Market Today and the entire response \
+                            should be in 2800 words maximum.",
                     },
                     {"role": "user", "content": headlines},
                 ]
