@@ -9,6 +9,7 @@ import concurrent.futures
 from functools import lru_cache
 from typing import List, Tuple
 import logging
+import pytz
 
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
@@ -57,9 +58,11 @@ def get_stock_reco() -> List[Tuple[str, str, str]]:
                 level2 = element.a
                 title = level2.get('title')  # Gets the title
                 url = level2.get('href')
-                date_comment = element.find(string=lambda text: isinstance(text, str) and 'IST' in text)
-                date_text = date_comment.strip('<!-- <span>').strip()
-                date = datetime.strptime(date_text[:-6], '%B %d, %Y %I:%M %p')
+                # date_comment = element.find(string=lambda text: isinstance(text, str) and 'IST' in text)
+                # date_text = date_comment.strip('<!-- <span>').strip()
+                # date = datetime.strptime(date_text[:-6], '%B %d, %Y %I:%M %p')
+                india_tz = pytz.timezone("Asia/Kolkata")
+                date = datetime.now(india_tz).date()
                 subject = [date, title, url]
                 news.append(subject)
         return news
@@ -81,8 +84,8 @@ def get_stock_reco() -> List[Tuple[str, str, str]]:
 
     market_news_01 = fetch_market_news_01(links)
     market_news_02 = fetch_market_news_02(link3)
-    market_news = market_news_01 + market_news_02
-    market_news.sort(reverse=True, key=lambda x: x[0])
+    market_news = market_news_02 + market_news_01
+    # market_news.sort(reverse=True, key=lambda x: x[0])
     for item in market_news:
         item[0] = item[0].strftime('%B %d, %Y %I:%M %p')
     return market_news
