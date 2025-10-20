@@ -6,7 +6,7 @@ Visit [MarketToday](https://market-today.onrender.com/) to view free hosted webs
 ## Features
 
 - 🔄 Real-time stock market news from multiple sources
-- 🤖 AI-powered market insights using Llama 3.2
+- 🤖 AI-powered market insights using OpenAI's GPT OSS 20B model
 - 📊 Cached recommendations for better performance
 - 🌐 Responsive web interface
 
@@ -56,13 +56,13 @@ pip install -r requirements.txt
 
 ## Usage
 
-### 1. Run server locally
+### Run server locally
 ```bash
 python3 wsgi.py
 ```  
 Go to http://localhost:5000/ to view the results in webpage.
 
-### 2. Run server using Docker
+### Run server using Docker
 ```bash
 docker build -t markettoday .
 docker run -e OPENROUTER_API_KEY=your_api_key_here -p 5000:5000 markettoday
@@ -77,11 +77,10 @@ This application is for educational purposes only. We are not SEBI registered fi
 
 ## Contributing
 
-1. Fork the repository
-2. Create your feature branch (`git checkout -b feature/amazing-feature`)
-3. Commit your changes (`git commit -m 'Add some amazing feature'`)
-4. Push to the branch (`git push origin feature/amazing-feature`)
-5. Open a Pull Request
+1. Create your feature branch (`git checkout -b feature/amazing-feature`)
+2. Commit your changes (`git commit -m 'Add some amazing feature'`)
+3. Push to the branch (`git push origin feature/amazing-feature`)
+4. Open a Pull Request
 
 ## License
 
