@@ -33,8 +33,8 @@ def fetch_url(url: str) -> str:
 def get_stock_reco() -> List[Tuple[str, str, str]]:
     """Fetch stock recommendations with parallel requests."""
     urls = [
-        'https://www.moneycontrol.com/news/business/stocks/',
-        'https://www.moneycontrol.com/news/business/stocks/page-2',
+        # 'https://www.moneycontrol.com/news/business/stocks/',
+        # 'https://www.moneycontrol.com/news/business/stocks/page-2',
         'https://economictimes.indiatimes.com/markets/stocks/recos'
     ]
     
@@ -44,10 +44,10 @@ def get_stock_reco() -> List[Tuple[str, str, str]]:
     
     soups = [BeautifulSoup(resp, 'html.parser') for resp in responses if resp]
     
-    link1 = soups[0].select('#cagetory')
-    link2 = soups[1].select('#cagetory')
-    links = link1 + link2
-    link3 = soups[2].select('.eachStory')
+    # link1 = soups[0].select('#cagetory')
+    # link2 = soups[1].select('#cagetory')
+    # links = link1 + link2
+    link3 = soups[0].select('.eachStory')
 
     def fetch_market_news_01(links):
         """Fetch market feeds."""
@@ -86,7 +86,7 @@ def get_stock_reco() -> List[Tuple[str, str, str]]:
     market_news_02 = fetch_market_news_02(link3)
     market_news = market_news_02
     # market_news = market_news_02 + market_news_01
-    # market_news.sort(reverse=True, key=lambda x: x[0])
+    market_news.sort(reverse=True, key=lambda x: x[0])
     for item in market_news:
         item[0] = item[0].strftime('%B %d, %Y %I:%M %p')
     return market_news
