@@ -82,9 +82,10 @@ def get_stock_reco() -> List[Tuple[str, str, str]]:
             news.append(subject)
         return news
 
-    market_news_01 = fetch_market_news_01(links)
+    # market_news_01 = fetch_market_news_01(links)
     market_news_02 = fetch_market_news_02(link3)
-    market_news = market_news_02 + market_news_01
+    market_news = market_news_02
+    # market_news = market_news_02 + market_news_01
     # market_news.sort(reverse=True, key=lambda x: x[0])
     for item in market_news:
         item[0] = item[0].strftime('%B %d, %Y %I:%M %p')
