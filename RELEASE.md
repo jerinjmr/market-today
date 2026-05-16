@@ -1,3 +1,85 @@
+# MarketToday v0.3.0 Release Notes 📈
+
+## Highlights
+Upgraded AI model for significantly better insights, overhauled UI responsiveness across devices, and removed MoneyControl dependency due to hosting restrictions.
+
+---
+
+## New Features 🌟
+
+### AI Model Upgrade
+* Upgraded from Llama 3.2 to `gpt-oss-20b` for higher quality market insights
+* Improved prompt engineering for more actionable and relevant analysis
+* Increased max token output to 3000 for longer, more detailed responses
+
+### Timezone Support
+* Added `pytz` package for accurate timezone handling across the application
+
+---
+
+## UI Enhancements 🎨
+
+### Responsive Layout Overhaul
+* Added comprehensive responsive breakpoints for mobile, tablet, and desktop
+* Implemented flexbox-based layout for better content organization
+* Optimized container widths and spacing across all screen sizes
+
+### AI Insights Section
+* Increased AI insights section prominence with 80vh height
+* Improved visibility and accessibility of AI-generated content
+
+### Footer & Layout Fixes
+* Fixed footer positioning and overlap issues
+* Ensured proper content flow without element collisions
+
+---
+
+## Technical Improvements 🔧
+
+### MoneyControl Scraping Removal
+* Removed MoneyControl page scraping entirely — blocked by Render's infrastructure (403 Forbidden)
+* Removed date-based news sorting as the date field was unavailable from scrape responses
+* This is a permanent removal, not a temporary workaround
+
+### Documentation
+* Updated README.md with correct model information
+
+---
+
+## Breaking Changes ⚠️
+* MoneyControl is no longer a data source — news from MoneyControl will not appear in the application
+
+## Data & API Sources
+- [Economic Times](https://economictimes.indiatimes.com/)
+- [OpenRouter AI API](https://openrouter.ai/)
+
+## Browser Compatibility
+* Chrome (latest)
+* Firefox (latest)
+* Safari (latest)
+* Edge (latest)
+
+## Installation Instructions
+1. Clone the repository
+2. Install required dependencies:
+```bash
+   pip install -r requirements.txt
+```
+3. Set up environment variables in `.env`
+4. Run the application:
+```bash
+   python wsgi.py
+```
+
+## Contributors
+- @jerinjmr & @jerin-scalers-ai
+- @angeleenajohn
+
+## Known Issues 🐛
+* MoneyControl data source permanently removed due to Render hosting restrictions
+
+---
+
 # MarketToday v0.2.0 Release Notes 📈
 
 ## New Features 🌟
