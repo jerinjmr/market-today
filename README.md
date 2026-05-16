@@ -26,10 +26,9 @@ Visit [MarketToday](https://market-today.onrender.com/) to view free hosted webs
 - Production-grade Gunicorn server with worker management
 
 ## Data & API Sources
-
-- [MoneyControl](https://www.moneycontrol.com/)
 - [Economic Times](https://economictimes.indiatimes.com/)
 - [OpenRouter AI API](https://openrouter.ai/)
+- [MoneyControl](https://www.moneycontrol.com/) (No longer supported)
 
 ## Prerequisites
 
